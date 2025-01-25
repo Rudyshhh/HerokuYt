@@ -20,3 +20,7 @@ def get_logs(log_level: Optional[str] = None, start_time: Optional[str] = None, 
         query["timestamp"]["$lte"] = end_time
     logs = list(collection.find(query, {"_id": 0}))
     return {"logs": logs}
+
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the Log Analyzer API!"}
