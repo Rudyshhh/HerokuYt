@@ -1,0 +1,3 @@
+timestamp,log_level,user_id,message
+2025-01-09 10:45:32,INFO,1234,Login successful
+2025-01-09 11:15:45,INFO,1324,Logout bida bidu
