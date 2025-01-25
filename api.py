@@ -7,6 +7,10 @@ client = MongoClient("mongodb://localhost:27017/")
 db = client["log_database"]
 collection = db["logs"]
 
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the Log Analyzer API!"}
+
 @app.get("/logs")
 def get_logs(log_level: str = None, start_time: str = None, end_time: str = None):
     query = {}
