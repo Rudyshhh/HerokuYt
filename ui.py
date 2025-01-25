@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import pandas as pd
 
-API_URL = "http://localhost:8000/logs"
+API_URL = "https://herokuyt.onrender.com/logs"
 
 st.title("Log Analyzer")
 
