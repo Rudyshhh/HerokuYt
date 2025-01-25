@@ -30,7 +30,10 @@ from pymongo import MongoClient
 from datetime import datetime
 
 app = FastAPI()
-client = MongoClient("mongodb+srv://r11mehta:junejune@cluster0.0ip1h.mongodb.net/")
+# client = MongoClient("mongodb+srv://r11mehta:junejune@cluster0.0ip1h.mongodb.net/")
+# Use the MongoDB URI with ssl=true and retryWrites=true for connection stability
+mongo_uri = "mongodb+srv://r11mehta:junejune@cluster0.0ip1h.mongodb.net/?retryWrites=true&w=majority&ssl=true"
+
 db = client["log_database"]
 collection = db["logs"]
 
