@@ -13,40 +13,19 @@ This project provides a log analysis system with a **FastAPI backend**, a **Stre
 5. [File Explanations](#file-explanations)
 6. [API Endpoints](#api-endpoints)
 7. [Troubleshooting](#troubleshooting)
-8. [License](#license)
 
----
 
-## Project Structure
 
-log_analyzer_project/
-│-- api.py               # FastAPI backend for log retrieval
-│-- log_analyzer.py      # CLI for log parsing, filtering, and storage
-│-- ui.py                # Streamlit frontend to interact with the API
-│-- requirements.txt     # Required dependencies
-│-- README.md            # Project documentation
-│-- logs/                # Directory to store log files (optional)
-│-- .env                 # Environment variables (MongoDB URI)
-│-- render.yaml          # Deployment configuration for Render
-
----
 
 ## Installation
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/log-analyzer.git
-   cd log-analyzer
+   git clone https://github.com/Rudyshhh/HerokuYt.git
+   cd HerokuYt
    ```
 
-2. **Create a virtual environment and activate it:**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate   # For Linux/macOS
-   venv\Scripts\activate      # For Windows
-   ```
-
-3. **Install the required dependencies:**
+2. **Install the required dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
@@ -103,10 +82,19 @@ Start the FastAPI server with:
 ```bash
 uvicorn api:app --reload
 ```
+Once the server is running, you can access the API at: http://127.0.0.1:8000/docs.
 
-Access the API at: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+You can now use both FastAPI and Streamlit:
 
----
+FastAPI: Access the API endpoints directly from the browser or use a tool like curl or Postman to send requests to the API.
+
+Streamlit: Run the Streamlit UI in a separate terminal with the following command:
+
+``` bash
+
+streamlit run ui.py
+```
+This will launch the frontend, allowing you to interact with the FastAPI backend via the graphical interface.
 
 ### 2. Running the CLI Tool
 
@@ -133,19 +121,19 @@ Example commands:
 
 ### 3. Running the Streamlit UI
 
+Before running the Streamlit frontend, you need to deploy the FastAPI backend on Render.
+
+#### 1. Deploy the FastAPI Backend on Render
+
+Follow the steps in the **Deployment on Render** section of this README to deploy the FastAPI backend. Once the backend is deployed, Render will provide a live URL.
+
+#### 2. Run the Streamlit Frontend
+
 To start the Streamlit frontend:
 
 ```bash
 streamlit run ui.py
 ```
-
-- Enter the Render backend URL:  
-  ```
-  https://herokuyt.onrender.com/logs
-  ```
-- Filter logs by level and time.
-
----
 
 ## File Explanations
 
