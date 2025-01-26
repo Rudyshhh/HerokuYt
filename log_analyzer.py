@@ -6,7 +6,6 @@ from pymongo import MongoClient
 from fastapi import FastAPI
 import uvicorn
 
-# Function to parse the log file
 def parse_log(file, level=None, st_time=None, end_time=None):
     logs = []
     pattern = re.compile(r"(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}) (\w+) UserID:(\d+) (.+)")
@@ -26,7 +25,6 @@ def parse_log(file, level=None, st_time=None, end_time=None):
                 print(f"Skipping invalid timestamp: {timestamp_str}")
                 continue
 
-            # Filtering logs based on provided arguments
             if level and log_level.upper() != level.upper():
                 continue
             if st_time and timestamp < st_time:
@@ -45,7 +43,6 @@ def parse_log(file, level=None, st_time=None, end_time=None):
         print("No logs available after applying filters.")
     return logs
 
-# Function to write logs to CSV
 def write_to_csv(logs, output_file):
     if not logs:
         print("No logs to write to CSV.")
@@ -62,7 +59,6 @@ def write_to_csv(logs, output_file):
             })
     print(f"CSV report saved to {output_file}")
 
-# Function to summarize log data
 def summarize_logs(logs):
     if not logs:
         print("No logs available for summary.")
@@ -84,7 +80,6 @@ def summarize_logs(logs):
     print(f"Number of logs by category: INFO={log_levels['INFO']} | WARN={log_levels['WARN']} | ERROR={log_levels['ERROR']}")
     print(f"Most active user: UserID {most_active_user}")
 
-# Function to insert logs into MongoDB
 def insert_into_mongodb(logs, db_url):
     if not logs:
         print("No logs to insert into MongoDB.")
@@ -98,7 +93,6 @@ def insert_into_mongodb(logs, db_url):
     except Exception as e:
         print(f"Failed to insert into MongoDB: {e}")
 
-# FastAPI application setup
 app = FastAPI()
 
 @app.get("/logs")
@@ -119,7 +113,6 @@ def get_logs(log_level: str = None, start_time: str = None, end_time: str = None
 
     return {"logs": logs}
 
-# Main function to handle CLI arguments
 def main():
     parser = argparse.ArgumentParser(description="Analyze server log files.")
     parser.add_argument("--logfile", required=True, help="Path to the input log file")
